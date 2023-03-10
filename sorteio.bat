@@ -6,25 +6,46 @@ set /a numeroSorteado=%random% %%50 +1
 set /a palpite=0
 set /a tentativas=0
 
-echo Bem-vindo ao jogo de adivinhacao!
-echo Voce tem 5 tentativas para adivinhar um numero entre 1 e 50.
+echo --------------------------------------------------------------------------------
+echo.
+echo 		ADIVINHE UM NUMERO SORTEADO ENTRE 01  E 50
+echo.
+echo 		VOCE TEM 5 TENTATIVAS
+echo.
+echo --------------------------------------------------------------------------------
 
 :inicio
+echo.
 set /p palpite=Digite seu palpite: 
 set /a tentativas+=1
+echo.
+echo --------------------------------------------------------------------------------
 
 if %palpite% equ %numeroSorteado% (
-    echo Parabens! Voce adivinhou o numero em %tentativas% tentativa(s)!
+	echo --------------------------------------------------------------------------------
+	echo.
+    echo Parabens! Voce adivinhou o numero em %tentativas% tentativas!
+	echo.
+	echo --------------------------------------------------------------------------------
     goto fim
 ) else if %palpite% lss %numeroSorteado% (
-    echo Seu palpite foi menor que o numero correto.
+	echo.
+    echo Seu palpite foi menor que o numero correto. Tente novamente!
+	echo.
+	echo --------------------------------------------------------------------------------
 ) else (
-    echo Seu palpite foi maior que o numero correto.
+	echo.
+    echo Seu palpite foi maior que o numero correto. Tente novamente!
+	echo.
+	echo --------------------------------------------------------------------------------
 )
 
 if %tentativas% lss 5 goto inicio
 
+echo.
 echo Voce esgotou todas as suas tentativas. O numero correto era %numeroSorteado%.
+echo.
+echo --------------------------------------------------------------------------------
 
 :fim
-pause>nul
+pause
